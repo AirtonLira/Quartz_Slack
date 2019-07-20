@@ -11,11 +11,10 @@ import org.apache.http.impl.client.HttpClients;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SlackUtils {
-    private static String slackWebhookUrl = "https://hooks.slack.com/services/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";
-	
+
     
 	
-    public static void sendMessage(SlackMessage message) {
+    public static void sendMessage(SlackMessage message, String slackWebhookUrl) {
 	
         CloseableHttpClient client = HttpClients.createDefault();
 	

@@ -7,7 +7,7 @@ import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.SimpleScheduleBuilder;
-import org.quartz.Trigger;
+import org.quartz.SimpleTrigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
@@ -29,15 +29,13 @@ public class RunApp {
 	        JobDetail job1 = JobBuilder.newJob(objJob.getClass()).build();
 
 
+	             
 	        
-	        //Cria agendamento do job que será executado para sempre de 3 em 3 segundos
-	        SimpleScheduleBuilder agendamento = SimpleScheduleBuilder.simpleSchedule();
-	        agendamento.withIntervalInMinutes(5);
-	        agendamento.repeatForever();
-	        
-	        // Cria o disparo com base no agendamento
-	        Trigger disparo = TriggerBuilder.newTrigger().withIdentity("TrgBackup").withSchedule(agendamento).build();
-	        
+	        SimpleTrigger trigger = TriggerBuilder.newTrigger().withIdentity("greattrigger", "mygroup")
+	        		    .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2)
+	        	    		.repeatForever()
+	        	    		.withIntervalInSeconds(5)).build();
+	 	        
 	        
 	        //Cria o scheduler oficial que recebe o job e o agendamento
 	        Scheduler scheduleoficial = new StdSchedulerFactory().getScheduler();
@@ -45,7 +43,7 @@ public class RunApp {
 	       
 
 	        scheduleoficial.start();
-	        scheduleoficial.scheduleJob(job1, disparo);
+	        scheduleoficial.scheduleJob(job1, trigger);
 
 		 
 	}
