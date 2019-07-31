@@ -1,0 +1,17 @@
+<servidores>
+  <endereco>
+    <string>http://localhost:8080/status/validar</string>
+    <string>http://192.168.0.23</string>
+  </endereco>
+  <descricao_off>
+    <string>[Atenção] - Servidor de backup esta offline!!!!!!</string>
+    <string>computador offline</string>
+  </descricao_off>
+  <descricao_on>
+  	<string>Servidor de backup esta online!</string>
+  	<string>computador - online</string>
+  </descricao_on>
+  <slack>
+  	https://hooks.slack.com/services/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
+  </slack>
+</servidores>
